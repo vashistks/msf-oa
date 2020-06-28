@@ -1,0 +1,19 @@
+private static int maxA(String s) {
+	int cnt = 0, res = 0;
+	for(int i=0;i<s.length();i++) {
+		char c = s.charAt(i);
+		if(c == 'a')
+			cnt++;
+		else {
+			res += 2 - cnt;
+			cnt = 0;
+		}
+		if(cnt == 3)
+			return -1;
+	}
+	if(s.charAt(s.length() - 1) != 'a')
+		res+=2;
+	else
+		res += 2 - cnt;
+	return res;
+}

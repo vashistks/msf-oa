@@ -1,0 +1,22 @@
+private static int getNumOfFairIndexes(int[] A, int[] B) {
+	int res = 0, sumA = 0, sumB = 0;
+	for(int i=0;i<A.length;i++) {
+		sumA += A[i];
+		sumB += B[i];
+	}
+
+            if (sumA != sumB || sumA % 2 != 0 || sumB % 2 != 0)    // if total sum of arrays are not equal or not even, then can't divide
+                  return 0;
+
+	int tmpA = 0, tmpB = 0;
+	for(int i=0;i<A.length-1;i++) {
+		tmpA += A[i];
+		tmpB += B[i];
+		if(sumA == 2 * tmpA && sumB == 2 * tmpB && tmpA == tmpB)
+			res++;
+	}
+	return res;
+}
+
+
+comments - use long instead of int

@@ -1,0 +1,25 @@
+int getLargestNum(int[] array) {
+     Map<Integer, Integer> hm = new HashMap<>();
+     for (int i : array) {
+         hm.put(i, hm.getOrDefault(i, 0) + 1);
+     }
+     int max = Integer.MIN_VALUE;
+     int res = 0;
+     for (Map.Entry<Integer, Integer> entity : hm.entrySet()) {
+         if (entity.getKey() == entity.getValue()) {
+             if (entity.getKey() > max) {
+                 max = entity.getKey();
+                 res = entity.getValue();
+             }
+             or
+              max = Math.max(max, entity.getValue());
+         }
+     }
+     return res;
+ }
+ public static void main(String[] args) {
+     int[] array = {3, 8, 2, 3, 3, 2};
+     Test test = new Test();
+     int res = test.getLargestNum(array);
+     System.out.println(res);
+ }

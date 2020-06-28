@@ -1,0 +1,21 @@
+private String cropWords(String s, int k){
+        if(k >= s.length()){
+            return s;
+        }
+        StringBuilder sb = new StringBuilder(s.substring(0, k));
+        if(s.charAt(k) != ' '){
+            while(sb.charAt(--k) != ' '){
+                sb.deleteCharAt(k);
+            }
+        }
+        while(sb.length() > 0 && sb.charAt(sb.length() - 1) == ' '){
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        return sb.toString();
+    }
+
+    add trim at start
+
+    while(sb.charAt(0)== ' '){
+      sb.deleteCharAt(0);
+    }

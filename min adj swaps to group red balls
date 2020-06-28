@@ -1,0 +1,42 @@
+public static int solution(String s) {
+    List<Integer> redIndices = getRedIndices(s);
+    int mid = redIndices.size() / 2;
+    int minSwaps = 0;
+    for (int i = 0; i < redIndices.size(); i++) {
+        // number of swaps for each R is the distance to mid, minus the number of R's between them
+        minSwaps += Math.abs(redIndices.get(mid) - redIndices.get(i)) - Math.abs(mid - i);
+    }
+    return minSwaps;
+}
+
+private static List<Integer> getRedIndices(String s) {
+    List<Integer> indices = new ArrayList<>(s.length());
+    for (int i = 0; i < s.length(); i++) {
+        if (s.charAt(i) == 'R') {
+            indices.add(i);
+        }
+    }
+    return indices;
+}
+
+
+int min_swap(const string& s) {
+  int red_count = 0;
+  for (char c : s) {
+    if (c == 'R') ++red_count;
+  }
+  int i = 0, j = s.size() - 1, res = 0;
+  while (i < j) {
+    if (s[i] == 'R' && s[j] == 'R') {
+      red_count -= 2;
+      res += j - i - 1 - red_count;
+      ++i;
+      --j;
+    } else if (s[i] != 'R') {
+      ++i;
+    } else {
+      --j;
+    }
+  }
+  return res;
+}

@@ -1,0 +1,15 @@
+For any bulb to shine at position k (not array index, but the actual position in the line), all the bulbs 1 through k must be turned on at a given instance. Now, if A[i] = p such that it makes all the bulbs 1 through k to shine, then p must be in the range [1, k-1], inclusive and no other position in that range should be missing.
+
+This means that the sum of the positions of the turned on bulbs must be 1+2+3+...+k. This sum also has to be equal to 1+2+3+ ... +i (1 based index) because no other bulb after position k must not be turned on according to given condition. Time O(N), Space O(1). Code below:
+
+public int getShiningCounts(int[] arr) {
+	int ans = 0, sum = 0, target = 0;
+
+	for(int i = 1; i<= arr.length; i++) {
+		sum += arr[i-1];
+		target += i ; //Sum from 1 to i
+		if(sum == target) ans++;
+	}
+
+	return ans;
+}

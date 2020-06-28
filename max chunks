@@ -1,0 +1,11 @@
+private static int solve(int[] nums) {
+	int res = 0, copySum = 0, oriSum = 0;
+	int[] copy = Arrays.copyOf(nums, nums.length);
+	Arrays.sort(copy);
+	for(int i=0;i<nums.length;i++) {
+		copySum += copy[i];
+		oriSum += nums[i];
+		if(copySum == oriSum)
+			res++;
+	}
+	return res;

@@ -1,0 +1,37 @@
+public static void main(String[] args) {
+    String s1 = "baaabbabbb";
+    String s2 = "babba";
+    String s3 = "abaaaa";
+    String s4 = "a";
+    System.out.println(getLongest(s1));
+    System.out.println(getLongest(s2));
+    System.out.println(getLongest(s3));
+    System.out.println(getLongest(s4));
+}
+
+private static int getLongest(String s) {
+    if(s == null || s.length() == 0)
+        return 0;
+    if(s.length() < 3)
+        return s.length();
+    int cnt = 1;
+    int l = 0;
+    int res = 0;
+    for(int r = 1;r < s.length();r++) {
+        char c = s.charAt(r);
+        if(s.charAt(r-1) == c) {
+            cnt++;
+        }else {
+            // clear the cnt as long as no consecutive letters
+            cnt = 1;
+        }
+        if(cnt > 2) {
+            // if there are more than 2 consecutive letters,
+            // move the left pointer
+            l = r - 1;
+        } else {
+            res = Math.max(res, r - l + 1);
+        }
+    }
+    return res;
+}

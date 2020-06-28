@@ -1,0 +1,4 @@
+public static String solution(String s, int k) {
+    var days = List.of("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
+    return days.get((days.indexOf(s) + k) % 7);
+}

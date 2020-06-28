@@ -1,0 +1,27 @@
+Java solution O(n)/O(1): Basic ideal is to check pre/post char if current char is ?. After that pick up a new char from 'a' to 'z'
+
+public String replaceQuestionMark(String str){
+    if(str.length()==0){
+        return str;
+    }
+    char[] arr = str.toCharArray();
+
+    for(int i=0; i<arr.length; i++){
+        if(arr[i]=='?'){
+            char pre = '?';
+            char post = '?';
+            if(i>0){
+                pre = arr[i-1];
+            }
+            if(i<arr.length-1){
+                post = arr[i+1];
+            }
+            char rep = 'a';
+            while((rep==pre || rep==post)&& rep<='z'){
+                rep = (char)(rep+1);
+            }
+            arr[i] = rep;
+        }
+    }
+    return new String(arr);
+}
