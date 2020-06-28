@@ -5,9 +5,7 @@ class Solution {
         if (arr == null || arr.size() == 0) {
             return 0;
         }
-
         dfs(arr, "", 0);
-
         return result;
     }
 
@@ -17,11 +15,9 @@ class Solution {
         if (isUniqueChar) {
             result = Math.max(path.length(), result);
         }
-
         if (idx == arr.size() || !isUniqueChar) {
             return;
         }
-
         for (int i = idx; i < arr.size(); i++) {
             dfs(arr, path + arr.get(i), i + 1);
         }
